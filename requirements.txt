@@ -1,0 +1,5 @@
+dnslib
+flask
+pyyaml
+schedule
+pandas

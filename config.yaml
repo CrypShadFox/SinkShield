@@ -1,0 +1,18 @@
+# config.yaml
+
+database:
+  path: "sinkhole.db"
+
+dns:
+  listen_ip: "127.0.0.1"
+  port: 5353
+  timeout: 10
+  upstream_resolver: "8.8.8.8"
+
+blocklist:
+  urls:
+    - "https://v.firebog.net/hosts/AdguardDNS.txt"
+    - "https://v.firebog.net/hosts/Prigent-Ads.txt"
+    - "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt"
+  update_interval_hours: 24  # Set how often you want to update the blocklist
+

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Blocked Domains ({{ count }})</h2>
+  <div class="list-group">
+    {% for domain in domains %}
+      <a href="https://{{ domain }}" class="list-group-item list-group-item-action" target="_blank">{{ domain }}</a>
+    {% endfor %}
+  </div>
+{% endblock %}
