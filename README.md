@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  ![Python Version](https://img.shields.io/badge/python-3.10%2B-green)
 
-A **DNS Sinkhole & Blocklist Manager** with auto-updating feeds, proxying for allowed queries, and a polished Flask Web UI. Perfect for home labs, SOC learning, or lightweight network protection.
+A **Simple DNS Sinkhole & Blocklist Manager** with auto-updating feeds, proxying for allowed queries, and a Flask Web interface. Good for home labs and SOC learning.
 
 ---
 
