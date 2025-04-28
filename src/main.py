@@ -7,10 +7,10 @@ import sqlite3
 from dnslib.server import DNSServer, BaseResolver
 from dnslib import DNSRecord, RR, QTYPE, A
 from flask import Flask
-from updater import start_scheduler  # Make sure updater.py is importable!
+from updater import start_scheduler
 from database import init_db
 
-# ---- Load config ----
+#Load config
 with open('config.yaml') as f:
     cfg = yaml.safe_load(f)
 
@@ -19,7 +19,7 @@ PORT = cfg['dns']['port']
 UPSTREAM_DNS = cfg['dns']['upstream_resolver']
 DB_PATH = cfg['database']['path']
 
-# ---- DNS Sinkhole Resolver ----
+#DNS Resolver
 def is_blocked(domain):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
@@ -60,7 +60,7 @@ def log_action(domain, client_ip, action):
     conn.commit()
     conn.close()
 
-# ---- Web UI ----
+#WebUI
 app = Flask(__name__)
 
 @app.route('/')
@@ -70,9 +70,9 @@ def home():
     c.execute('SELECT * FROM query_logs ORDER BY timestamp DESC LIMIT 50')
     logs = c.fetchall()
     conn.close()
-    return str(logs)  # Later replace with a real HTML template!
+    return str(logs)  #Will later replace with Real html
 
-# ---- Runner Threads ----
+#Threads
 def run_dns_server():
     resolver = SinkholeResolver()
     server = DNSServer(resolver, port=PORT, address=LISTEN_IP)
@@ -85,7 +85,7 @@ def run_web_ui():
 def run_blocklist_updater():
     start_scheduler()
 
-# ---- Main Entrypoint ----
+#main
 if __name__ == "__main__":
     init_db()
 
