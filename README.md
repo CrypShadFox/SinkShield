@@ -1,12 +1,12 @@
 # SinkShield
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  ![Python Version](https://img.shields.io/badge/python-3.10%2B-green)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-green)
 
 A **Simple DNS Sinkhole & Blocklist Manager** with auto-updating feeds, proxying for allowed queries, and a Flask Web interface. Good for home labs and SOC learning.
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Automatic Blocklist Fetching**  
   Pulls curated domain lists (e.g. from Firebog) on a schedule  
@@ -22,7 +22,7 @@ A **Simple DNS Sinkhole & Blocklist Manager** with auto-updating feeds, proxying
 
 ---
 
-## 📦 Prerequisites
+## Prerequisites
 
 - **Python 3.10+**  
 - `pip`  
@@ -30,7 +30,7 @@ A **Simple DNS Sinkhole & Blocklist Manager** with auto-updating feeds, proxying
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ```bash
 # 1. Clone the repo
@@ -70,7 +70,6 @@ blocklist:
   local_files:
     - "txt/C2.txt" # Example
   update_interval_hours: 24  # Set how often you want to update the blocklist
-
 ```
 ## Usage
 
@@ -80,20 +79,11 @@ blocklist:
 python3 src/database.py
 ```
 
-- Start the updater
+- Start the server
 ```bash
-python3 src/updater.py
+python3 src/main.py
 ```
 
--  Start the DNS Sinkhole
-```bash
-python3 src/server.py
-```
-
--  Launch the Web UI
-```bash
-python3 src/webui.py
-```
 - Test with dig
 ```bash
 # Blocked domain → should return 0.0.0.0
@@ -107,13 +97,6 @@ dig @127.0.0.1 -p 5353 google.com A +short
 
 - Pagination, filtering & search in the Web UI
 
-- User authentication (Flask-Login)
-
 - Chart.js graphs for query trends
 
-- Docker & docker-compose support
-
-- Prometheus metrics endpoint
-
-- REST API for manual block/unblock
 
