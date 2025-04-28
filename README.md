@@ -51,42 +51,48 @@ pip install -r requirements.txt
 Copy & edit `config.yaml` to suit your environment:
 
 ```yaml
+# config.yaml
+
 database:
   path: "sinkhole.db"
 
 dns:
-  listen_ip: "0.0.0.0"           # IP to bind
-  port:  5353                    # Use 53 in prod (requires root)
-  timeout: 5                     # Upstream DNS timeout (seconds)
-  upstream_resolver: "8.8.8.8"   # Your preferred DNS
+  listen_ip: "127.0.0.1"
+  port: 5353
+  timeout: 10
+  upstream_resolver: "8.8.8.8"
 
 blocklist:
   urls:
     - "https://v.firebog.net/hosts/AdguardDNS.txt"
     - "https://v.firebog.net/hosts/Prigent-Ads.txt"
     - "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt"
-  update_interval_hours: 24
+  local_files:
+    - "txt/C2.txt" # Example
+  update_interval_hours: 24  # Set how often you want to update the blocklist
 
-webui:
-  host: "127.0.0.1"
-  port: 5000
 ```
 ## Usage
 
 - Initialize the database
 
 ```bash
-python src/database.py
+python3 src/database.py
+```
+
+- Start the updater
+```bash
+python3 src/updater.py
 ```
 
 -  Start the DNS Sinkhole
 ```bash
-python src/server.py
+python3 src/server.py
 ```
 
 -  Launch the Web UI
 ```bash
-python src/webui.py
+python3 src/webui.py
 ```
 - Test with dig
 ```bash
