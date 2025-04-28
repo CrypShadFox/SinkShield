@@ -1,5 +1,3 @@
-# sinkhole/server.py
-
 import time
 import yaml
 import sqlite3
